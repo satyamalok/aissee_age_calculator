@@ -1,0 +1,19 @@
+<div id="sainik-school-widget"></div>
+<script>
+  (function() {
+    var widgetContainer = document.getElementById('sainik-school-widget');
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'https://raw.githubusercontent.com/satyamalok/aissee_age_calculator/refs/heads/main/aissee%20age%20calculator.html', true);
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4 && xhr.status === 200) {
+        widgetContainer.innerHTML = xhr.responseText;
+        // If your widget contains external scripts, you may need to re-execute them
+        var scripts = widgetContainer.getElementsByTagName('script');
+        for (var i = 0; i < scripts.length; i++) {
+          eval(scripts[i].innerText); // Be cautious with eval!
+        }
+      }
+    };
+    xhr.send();
+  })();
+</script>
